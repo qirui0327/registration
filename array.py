@@ -1,10 +1,12 @@
-from PIL import Image as im 
+import matplotlib.pyplot as plt
 import numpy as np
  
-arr= np.full((512 ,512),-1000)
+arr= np.full((512 ,512,100),-1000)
 arr[1][1] = -500
 arr[2][2] = 0
 arr[3] [3]= 100
-img  = im.fromarray(arr) 
-img.save("D://Image_from_array.png")
-print(arr)
+for index in range (arr.shape[2]):
+    plt.imshow(arr[:,:,index],cmap='grey')
+    plt.title(f'Slice {index + 1}')
+    plt.axis('off')
+    plt.savefig(f'D://slice_{index + 1}.png')
