@@ -2,11 +2,16 @@ import matplotlib.pyplot as plt
 import numpy as np
  
 arr= np.full((512 ,512,100),-1000)
-arr[1][1] = -500
-arr[2][2] = 0
-arr[3] [3]= 100
+start_point = [200,300,400]
+square_value = [-500,0,100]
+for i in range(len(start_point)):
+    print(i)
+    start_row,end_row = start_point[i] - 15,start_point[i] +15
+    start_col,end_col = start_point[i] - 15,start_point[i] +15
+    arr[start_row:end_row,start_col:end_col] =square_value[i]
+
 for index in range (arr.shape[2]):
     plt.imshow(arr[:,:,index],cmap='grey')
-    plt.title(f'Slice {index + 1}')
-    plt.axis('off')
-    plt.savefig(f'D://slice_{index + 1}.png')
+    plt.show()
+    plt.close()
+
